@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ProtectedNavbar } from '../../Navbars/ProtectedNavigation';
 import styled from "styled-components";
 
@@ -114,9 +115,13 @@ export const CreateGuide = () => {
                         </label>
                     </div>
 
-                    <div className='submitButton'>
+                    <section className='submitButton'>
                         <button>Submit</button>
-                    </div>
+
+                        <Link to='/protected'>
+                            <button>Cancel</button>
+                        </Link>
+                    </section>
                 </CreateFormStyle>
             </section>
 

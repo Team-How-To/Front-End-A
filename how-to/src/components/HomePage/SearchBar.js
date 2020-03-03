@@ -38,6 +38,16 @@ const SearchFormStyle = styled.form`
     background: ${props => props.theme.secondaryColor};
     color: ${props => props.theme.fontColorLight};
   }
+
+`;
+
+const SectionCardStyle = styled.section`
+  .guideCards {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+  }
+
 `;
 
 
@@ -61,13 +71,13 @@ const SearchForm = ( props ) => {
                           <button>Add New How-To</button>
                         </Link>
                     </SearchFormStyle>
-                    <section>
-                        <>
+                    <SectionCardStyle>
+                        <div className='guideCards'>
                             {props.searchResults.map(guide => {
                                 return <GuideForm guide={guide} key={guide.id}/>;
                             })}
-                        </>
-                    </section>
+                        </div>
+                    </SectionCardStyle>
                 </div>
             </section>
         </>
