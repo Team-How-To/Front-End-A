@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { LoginPage } from "./components/LoginPage/LoginPage";
 import { Signup } from "./components/SignupPage/SignupPage";
 import { HomePage as Home } from "./components/HomePage/HomePage";
+import { CreateGuide } from './components/HomePage/Cards/CreateGuide';
+
+
 import ProtectedRoute from "./utils/ProtectedRoute";
 import styled from "styled-components";
 import { GlobalProvider } from "./context/GlobalState";
@@ -17,9 +20,29 @@ function App() {
     <GlobalProvider>
       <Div className="App">
         <Switch>
-          <ProtectedRoute exact path="/protected" component={Home} />
-          <Route exact path="/" component={LoginPage} />
-          <Route path="/signup" component={Signup} />
+          <ProtectedRoute 
+            exact 
+            path="/protected" 
+            component={Home} 
+          />
+
+          <Route 
+            exact 
+            path="/" 
+            component={LoginPage} 
+          />
+
+
+          <Route 
+            path="/signup" 
+            component={Signup} 
+          />
+
+          <Route
+            path='/create_guide'
+            exact
+            component={CreateGuide}
+        />
         </Switch>
       </Div>
     </GlobalProvider>

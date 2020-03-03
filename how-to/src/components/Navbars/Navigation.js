@@ -43,7 +43,7 @@ export const Navigation = () => {
   return (
     <LoginNavbar>
       <Link className="brand-name" to="/">
-        <img className="logo" src={logo}></img>
+        <img className="logo" src={logo} alt='Site Logo' />
       </Link>
       <ul>
         <li>

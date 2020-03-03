@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
+import GuideForm from './Cards/GuideForm';
 
 // Styles
-const SearchForm = styled.form`
+const SearchFormStyle = styled.form`
   /* Main Form Styles */
   text-align: center;
   margin: 2%;
@@ -17,19 +19,52 @@ const SearchForm = styled.form`
     background: ${props => props.theme.secondaryColor};
     color: ${props => props.theme.fontColorLight};
   }
+
 `;
 
-const SearchBar = () => {
-  return (
-    <>
-      <SearchForm>
-        <input type="text" placeholder="Search Guides..." />
-        <button>Search</button>
-        {/* Eventually will link to add card form */}
-        <button>Add New How-To</button>
-      </SearchForm>
-    </>
-  );
-};
+const SectionCardStyle = styled.section`
+  .guideCards {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+  }
 
-export default SearchBar;
+`;
+
+
+const SearchForm = ( props ) => {
+
+    return (
+        <>
+            <section>
+                <div>
+                    <SearchFormStyle onSubmit={props.handleSubmit}>
+                        <label htmlFor="name">Search: </label>
+                        <input
+                            id='id'
+                            type="text"
+                            name="name"
+                            placeholder="Search Guides..."
+                            value={props.searchTerm}
+                            onChange={props.handleChange}
+                        />
+                        <Link to='/create_guide'>
+                          <button>Add New How-To</button>
+                        </Link>
+                    </SearchFormStyle>
+                    <SectionCardStyle>
+                        <div className='guideCards'>
+                            {props.searchResults.map(guide => {
+                                return (
+                                        <GuideForm guide={guide} key={guide.id}/>
+                                );
+                            })}
+                        </div>
+                    </SectionCardStyle>
+                </div>
+            </section>
+        </>
+    );
+}
+
+export default SearchForm;
