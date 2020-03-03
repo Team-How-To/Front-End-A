@@ -51,20 +51,22 @@ const CreateFormStyle = styled.form`
   }
 `;
 
+
 export const CreateGuide = () => {
 
     const [guide] = useState(
         {
-            id: '',
+            id: 'test',
             state: {
                 likes: 0,
                 up_vote: 0,
                 down_vote: 0
             },
-            title: '',
-            image: '',
-            content: ''
-        });
+            title: 'test',
+            image: 'test',
+            content: 'test'
+        }
+    );
 
     console.log('title: ', guide.title);
 
@@ -116,7 +118,7 @@ export const CreateGuide = () => {
                     </div>
 
                     <section className='submitButton'>
-                        <button>Submit</button>
+                        <button to='/'>Submit</button>
 
                         <Link to='/protected'>
                             <button>Cancel</button>

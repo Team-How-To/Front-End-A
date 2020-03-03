@@ -1,22 +1,3 @@
-// import React from "react";
-
-
-// const SearchBar = () => {
-//   return (
-//     <>
-//       <SearchForm>
-//         <input type="text" placeholder="Search Guides..." />
-//         <button>Search</button>
-//         {/* Eventually will link to add card form */}
-//         
-//       </SearchForm>
-//     </>
-//   );
-// };
-
-// export default SearchBar;
-
-
 import React from "react";
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
@@ -74,7 +55,9 @@ const SearchForm = ( props ) => {
                     <SectionCardStyle>
                         <div className='guideCards'>
                             {props.searchResults.map(guide => {
-                                return <GuideForm guide={guide} key={guide.id}/>;
+                                return (
+                                        <GuideForm guide={guide} key={guide.id}/>
+                                );
                             })}
                         </div>
                     </SectionCardStyle>

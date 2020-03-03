@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { LoginPage } from "./components/LoginPage/LoginPage";
 import { Signup } from "./components/SignupPage/SignupPage";
 import { HomePage as Home } from "./components/HomePage/HomePage";
 import { CreateGuide } from './components/HomePage/Cards/CreateGuide';
+
 
 import ProtectedRoute from "./utils/ProtectedRoute";
 import styled from "styled-components";

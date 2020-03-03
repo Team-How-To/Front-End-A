@@ -43,7 +43,7 @@ export const ProtectedNavbar = () => {
   return (
     <Navbar>
       <Link className="brand-name" to="/protected">
-        <img className="logo" src={logo}></img>
+        <img className="logo" src={logo} alt='Site Logo' />
       </Link>
       <ul>
         <li>
