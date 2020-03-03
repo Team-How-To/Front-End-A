@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import { LoginPage } from "./components/LoginPage/LoginPage";
 import { Signup } from "./components/SignupPage/SignupPage";
 import { HomePage as Home } from "./components/HomePage/HomePage";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./utils/ProtectedRoute";
 import styled from "styled-components";
-import axios from "axios";
+import { GlobalProvider } from "./context/GlobalState";
 import "./App.css";
 
 const Div = styled.div`
@@ -13,22 +13,16 @@ const Div = styled.div`
 `;
 
 function App() {
-  const axiosReq = () => {
-    // Testing Backend API (ignore)
-    axios
-      .get("https://how-too.herokuapp.com")
-      .then(res => console.log(res.data));
-  };
-
   return (
-    <Div className="App">
-      {axiosReq()}
-      <Switch>
-        <ProtectedRoute exact path="/protected" component={Home} />
-        <Route exact path="/" component={LoginPage} />
-        <Route path="/signup" component={Signup} />
-      </Switch>
-    </Div>
+    <GlobalProvider>
+      <Div className="App">
+        <Switch>
+          <ProtectedRoute exact path="/protected" component={Home} />
+          <Route exact path="/" component={LoginPage} />
+          <Route path="/signup" component={Signup} />
+        </Switch>
+      </Div>
+    </GlobalProvider>
   );
 }
 
