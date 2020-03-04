@@ -9,9 +9,6 @@ export const HomePage = () => {
     <div>
       <ProtectedNavbar />
       <FormList />
-      {/* <div>
-        <HowToList />
-      </div> */}
     </div>
   );
 };

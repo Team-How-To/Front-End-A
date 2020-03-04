@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import GuideForm from './Cards/GuideForm';
+import GuideCard from "./Cards/GuideCard";
 
 // Styles
 const SearchFormStyle = styled.form`
@@ -19,7 +19,6 @@ const SearchFormStyle = styled.form`
     background: ${props => props.theme.secondaryColor};
     color: ${props => props.theme.fontColorLight};
   }
-
 `;
 
 const SectionCardStyle = styled.section`
@@ -28,43 +27,38 @@ const SectionCardStyle = styled.section`
     justify-content: space-evenly;
     align-content: center;
   }
-
 `;
 
-
-const SearchForm = ( props ) => {
-
-    return (
-        <>
-            <section>
-                <div>
-                    <SearchFormStyle onSubmit={props.handleSubmit}>
-                        <label htmlFor="name">Search: </label>
-                        <input
-                            id='id'
-                            type="text"
-                            name="name"
-                            placeholder="Search Guides..."
-                            value={props.searchTerm}
-                            onChange={props.handleChange}
-                        />
-                        <Link to='/create_guide'>
-                          <button>Add New How-To</button>
-                        </Link>
-                    </SearchFormStyle>
-                    <SectionCardStyle>
-                        <div className='guideCards'>
-                            {props.searchResults.map(guide => {
-                                return (
-                                        <GuideForm guide={guide} key={guide.id}/>
-                                );
-                            })}
-                        </div>
-                    </SectionCardStyle>
-                </div>
-            </section>
-        </>
-    );
-}
+const SearchForm = props => {
+  return (
+    <>
+      <section>
+        <div>
+          <SearchFormStyle onSubmit={props.handleSubmit}>
+            <label htmlFor="name">Search: </label>
+            <input
+              id="id"
+              type="text"
+              name="name"
+              placeholder="Search Guides..."
+              value={props.searchTerm}
+              onChange={props.handleChange}
+            />
+            <Link to="/create_guide">
+              <button>Add New How-To</button>
+            </Link>
+          </SearchFormStyle>
+          <SectionCardStyle>
+            <div className="guideCards">
+              {props.searchResults.map(guide => {
+                return <GuideCard guide={guide} key={guide.id} />;
+              })}
+            </div>
+          </SectionCardStyle>
+        </div>
+      </section>
+    </>
+  );
+};
 
 export default SearchForm;
