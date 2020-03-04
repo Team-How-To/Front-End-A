@@ -4,7 +4,7 @@ import { LoginPage } from "./components/LoginPage/LoginPage";
 import { Signup } from "./components/SignupPage/SignupPage";
 import { HomePage as Home } from "./components/HomePage/HomePage";
 import { CreateGuide } from "./components/HomePage/SearchBar/CreateGuide";
-
+import { EditForm } from "./components/HomePage/Cards/EditForm";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import styled from "styled-components";
 import { GlobalProvider } from "./context/GlobalState";
@@ -23,6 +23,7 @@ function App() {
           <Route exact path="/" component={LoginPage} />
           <Route path="/signup" component={Signup} />
           <Route path="/create_guide" exact component={CreateGuide} />
+          <Route path="/edit_card" component={EditForm} />
         </Switch>
       </Div>
     </GlobalProvider>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Buttons extends React.Component {
   state = this.props.state;
@@ -40,7 +41,7 @@ class Buttons extends React.Component {
           {this.state.down_vote} -
         </button>
 
-        <button>Edit</button>
+        <Link to="/edit_card">Edit</Link>
 
         <button>Delete</button>
       </>
