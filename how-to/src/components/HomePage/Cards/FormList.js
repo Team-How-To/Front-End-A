@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SearchForm from "../SearchBar";
+import SearchForm from "../SearchBar/SearchBar";
 
 const guide = [
   {

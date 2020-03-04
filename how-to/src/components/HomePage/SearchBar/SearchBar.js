@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import GuideCard from "./Cards/GuideCard";
+import GuideCard from "../Cards/GuideCard";
 
 // Styles
 const SearchFormStyle = styled.form`

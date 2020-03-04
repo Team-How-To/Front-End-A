@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { LoginPage } from "./components/LoginPage/LoginPage";
 import { Signup } from "./components/SignupPage/SignupPage";
 import { HomePage as Home } from "./components/HomePage/HomePage";
-import { CreateGuide } from "./components/HomePage/Cards/CreateGuide";
+import { CreateGuide } from "./components/HomePage/SearchBar/CreateGuide";
 
 import ProtectedRoute from "./utils/ProtectedRoute";
 import styled from "styled-components";
