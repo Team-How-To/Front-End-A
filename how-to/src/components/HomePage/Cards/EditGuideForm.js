@@ -50,15 +50,7 @@ const EditFormStyles = styled.form`
   }
 `;
 
-export const EditForm = () => {
-  const [guide, setGuide] = useState({
-    title: "test",
-    image: "test",
-    content: "test"
-  });
-
-  console.log("title: ", guide.title);
-
+export const EditGuideForm = () => {
   return (
     <>
       <ProtectedNavbar />

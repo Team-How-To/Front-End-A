@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import GuideCard from "../Cards/GuideCard";
 
 // Styles
 const SearchFormStyle = styled.form`
@@ -18,14 +17,6 @@ const SearchFormStyle = styled.form`
     padding: 5px;
     background: ${props => props.theme.secondaryColor};
     color: ${props => props.theme.fontColorLight};
-  }
-`;
-
-const SectionCardStyle = styled.section`
-  .guideCards {
-    display: flex;
-    justify-content: space-evenly;
-    align-content: center;
   }
 `;
 
@@ -48,13 +39,6 @@ const SearchForm = props => {
               <button>Add New How-To</button>
             </Link>
           </SearchFormStyle>
-          <SectionCardStyle>
-            <div className="guideCards">
-              {props.searchResults.filter(guide => {
-                return <GuideCard guide={guide} key={guide.id} />;
-              })}
-            </div>
-          </SectionCardStyle>
         </div>
       </section>
     </>
