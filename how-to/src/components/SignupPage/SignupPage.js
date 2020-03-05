@@ -9,7 +9,7 @@ const SignupForm = styled.form`
   /* Main Form Styles */
   background-color: ${props => props.theme.primaryColor};
   width: 40%;
-  margin: 20% auto;
+  margin: 10% auto;
   text-align: center;
   border-radius: 15px;
   padding-top: 1%;
@@ -75,7 +75,7 @@ export const Signup = props => {
     e.preventDefault();
     e.preventDefault();
     axiosWithAuth()
-      .post("https://how-too.herokuapp.com/api/users/register", cred)
+      .post("/api/users/register", cred)
       .then(res => {
         setCred(res);
         props.history.push("/");

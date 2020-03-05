@@ -7,7 +7,7 @@ import { CreateGuide } from "./components/HomePage/SearchBar/CreateGuide";
 import { EditForm } from "./components/HomePage/Cards/EditForm";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import styled from "styled-components";
-import { GlobalProvider } from "./context/GlobalState";
+import { GlobalState } from "./context/GlobalState";
 import "./App.css";
 
 const Div = styled.div`
@@ -16,7 +16,7 @@ const Div = styled.div`
 
 function App() {
   return (
-    <GlobalProvider>
+    <GlobalState.Provider>
       <Div className="App">
         <Switch>
           <ProtectedRoute exact path="/protected" component={Home} />
@@ -26,7 +26,7 @@ function App() {
           <Route path="/edit_card" component={EditForm} />
         </Switch>
       </Div>
-    </GlobalProvider>
+    </GlobalState.Provider>
   );
 }
 

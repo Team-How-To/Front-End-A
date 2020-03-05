@@ -10,7 +10,7 @@ const LoginForm = styled.form`
   /* Main Form Styles */
   background-color: ${props => props.theme.primaryColor};
   width: 40%;
-  margin: 20% auto;
+  margin: 10% auto;
   text-align: center;
   border-radius: 15px;
   padding-top: 1%;
@@ -71,7 +71,7 @@ export const LoginPage = props => {
   const submit = e => {
     e.preventDefault();
     axiosWithAuth()
-      .post("https://how-too.herokuapp.com/api/users/login", cred)
+      .post("/api/users/login", cred)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         props.history.push("/protected");
