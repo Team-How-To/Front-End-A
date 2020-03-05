@@ -2,7 +2,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import axios from "axios";
 import { Navigation as Navbar } from "../Navbars/Navigation";
 
 // Styles
@@ -10,7 +10,7 @@ const LoginForm = styled.form`
   /* Main Form Styles */
   background-color: ${props => props.theme.primaryColor};
   width: 40%;
-  margin: 20% auto;
+  margin: 10% auto;
   text-align: center;
   border-radius: 15px;
   padding-top: 1%;
@@ -70,10 +70,11 @@ export const LoginPage = props => {
 
   const submit = e => {
     e.preventDefault();
-    axiosWithAuth()
+    axios
       .post("https://how-too.herokuapp.com/api/users/login", cred)
       .then(res => {
-        localStorage.setItem("token", res.data.payload);
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
         props.history.push("/protected");
       })
       .catch(err => {
