@@ -21,14 +21,6 @@ const SearchFormStyle = styled.form`
   }
 `;
 
-const SectionCardStyle = styled.section`
-  .guideCards {
-    display: flex;
-    justify-content: space-evenly;
-    align-content: center;
-  }
-`;
-
 const SearchForm = props => {
   return (
     <>
@@ -48,13 +40,6 @@ const SearchForm = props => {
               <button>Add New How-To</button>
             </Link>
           </SearchFormStyle>
-          <SectionCardStyle>
-            <div className="guideCards">
-              {props.searchResults.filter(guide => {
-                return <GuideCard guide={guide} key={guide.id} />;
-              })}
-            </div>
-          </SectionCardStyle>
         </div>
       </section>
     </>

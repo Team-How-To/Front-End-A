@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { ProtectedNavbar } from "../Navbars/ProtectedNavigation";
-import FormList from "./Cards/FormList";
+import GuideList from "./Cards/GuideList";
 
 export const HomePage = () => {
   const [state, setState] = useState([]);
@@ -17,7 +17,7 @@ export const HomePage = () => {
   return (
     <div>
       <ProtectedNavbar />
-      <FormList data={state} />
+      <GuideList data={state} />
     </div>
   );
 };
