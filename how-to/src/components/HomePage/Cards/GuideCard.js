@@ -33,11 +33,9 @@ const GuideCard = ({ guide }) => {
             {guide.title}
 
             <div>
-              <Buttons state={guide.state} />
+              <Buttons />
             </div>
           </h1>
-          <div>{guide.image}</div>
-          <p>{guide.content}</p>
         </div>
       </Card>
     </>

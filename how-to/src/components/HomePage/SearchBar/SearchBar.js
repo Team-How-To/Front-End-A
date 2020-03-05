@@ -50,7 +50,7 @@ const SearchForm = props => {
           </SearchFormStyle>
           <SectionCardStyle>
             <div className="guideCards">
-              {props.searchResults.map(guide => {
+              {props.searchResults.filter(guide => {
                 return <GuideCard guide={guide} key={guide.id} />;
               })}
             </div>
