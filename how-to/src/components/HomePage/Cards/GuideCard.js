@@ -34,16 +34,16 @@ const Card = styled.form`
   }
 `;
 
-const GuideCard = ({ guides }) => {
+const GuideCard = ({ guide }) => {
   return (
     <SectionCardStyle>
       <Card>
         <div>
-          <h1>{guides.title}</h1>
+          <h1>{guide.title}</h1>
+          <p>{guide.Steps}</p>
           <div>
-            <Buttons state={guides} />
+            <Buttons state={guide} />
           </div>
-          <p>{guides.Steps}</p>
         </div>
       </Card>
     </SectionCardStyle>

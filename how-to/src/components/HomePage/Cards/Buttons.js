@@ -28,7 +28,6 @@ class Buttons extends React.Component {
   render() {
     return (
       <>
-        {console.log("state: ", this.state.state)}
         <button onClick={this.addLikes} type="button">
           likes: {this.state.likes}
         </button>
