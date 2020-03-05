@@ -1,9 +1,10 @@
 // eslint-disable-next-line
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import { Navigation as Navbar } from "../Navbars/Navigation";
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import axios from 'axios';
+import { Navigation as Navbar } from '../Navbars/Navigation';
 
 // Styles
 const LoginForm = styled.form`
@@ -57,11 +58,11 @@ const LoginForm = styled.form`
 export const LoginPage = props => {
   // State
   const [cred, setCred] = useState({
-    username: "",
-    password: ""
+    username: '',
+    password: ''
   });
 
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   // Handlers
   const handleChanges = e => {
@@ -70,15 +71,16 @@ export const LoginPage = props => {
 
   const submit = e => {
     e.preventDefault();
-    axiosWithAuth()
-      .post("/api/users/login", cred)
+    axios
+      .post('https://how-too.herokuapp.com/api/users/login', cred)
       .then(res => {
-        localStorage.setItem("token", res.data.payload);
-        props.history.push("/protected");
+        console.log(res);
+        localStorage.setItem('token', res.data.token);
+        props.history.push('/protected');
       })
       .catch(err => {
         console.log(err);
-        setError("Invalid login, please try again");
+        setError('Invalid login, please try again');
       });
   };
 
@@ -88,28 +90,28 @@ export const LoginPage = props => {
       <LoginForm onSubmit={submit}>
         <h1>Login</h1>
         <div>
-          <label htmlFor="username">Username</label>
+          <label htmlFor='username'>Username</label>
           <input
-            type="text"
-            id="username"
-            name="username"
+            type='text'
+            id='username'
+            name='username'
             onChange={handleChanges}
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor='password'>Password</label>
           <input
-            type="password"
-            id="password"
-            name="password"
+            type='password'
+            id='password'
+            name='password'
             onChange={handleChanges}
           />
         </div>
 
         <button>Login</button>
         <div>
-          <span className="error-message">{error}</span>
-          <Link className="register-link" to="/signup">
+          <span className='error-message'>{error}</span>
+          <Link className='register-link' to='/signup'>
             Not a user? Register here
           </Link>
         </div>
