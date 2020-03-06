@@ -34,7 +34,8 @@ const Card = styled.form`
   }
 `;
 
-const GuideCard = ({ guide }) => {
+const GuideCard = ( {guide} ) => {
+
   return (
     <SectionCardStyle>
       <Card>

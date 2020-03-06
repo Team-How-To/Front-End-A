@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import GuideCard from "./GuideCard";
 import { GlobalState } from "../../../context/GlobalState";
+// import CreateGuideCard from '../SearchBar/CreateGuideCard';
 
 
 // // style for cards
@@ -57,6 +58,9 @@ const GuideList = () => {
             )
         })}
     </>
+    // <>
+    //     <CreateGuideCard guide={state}/>
+    // </>
   );
 };
 

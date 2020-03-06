@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { LoginPage } from "./components/LoginPage/LoginPage";
 import { Signup } from "./components/SignupPage/SignupPage";
 import { HomePage as Home } from "./components/HomePage/HomePage";
-import { CreateGuide } from "./components/HomePage/SearchBar/CreateGuide";
+import { CreateGuideForm } from "./components/HomePage/SearchBar/CreateGuideForm";
 import { EditGuideForm } from "./components/HomePage/Cards/EditGuideForm";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import styled from "styled-components";
@@ -33,7 +33,7 @@ function App() {
           <ProtectedRoute exact path="/protected" component={Home} />
           <Route exact path="/" component={LoginPage} />
           <Route path="/signup" component={Signup} />
-          <Route path="/create_guide" exact component={CreateGuide} />
+          <Route path="/create_guide" exact component={CreateGuideForm} />
           <Route path="/edit_card" component={EditGuideForm} />
         </Switch>
       </Div>
