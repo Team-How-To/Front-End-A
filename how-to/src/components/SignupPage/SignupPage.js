@@ -130,6 +130,18 @@ export const Signup = props => {
             onChange={handleChanges}
           />
         </div>
+        <div>
+          <label htmlFor="user_type">User type</label>
+          <select
+            type="select"
+            id="user_type"
+            name="user_type"
+            onChange={handleChanges}
+          >
+            <option>1</option>
+            <option>2</option>
+          </select>
+        </div>
 
         <button>Signup</button>
         <div>

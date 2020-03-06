@@ -50,16 +50,43 @@ const EditFormStyles = styled.form`
   }
 `;
 
-export const EditGuideForm = () => {
+const initialItem = {
+  id: "",
+  title: ""
+};
+
+export const EditGuideForm = props => {
+  const [guideInfo, setGuideInfo] = useState({ initialItem });
+
+  const changeHandler = e => {
+    console.log(guideInfo);
+    setGuideInfo({
+      ...guideInfo,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const id = Number(props.match.params.id);
+    props.updateGuide(id, guideInfo);
+  };
+
   return (
     <>
       <ProtectedNavbar />
       <section>
-        <EditFormStyles>
+        <EditFormStyles onSubmit={handleSubmit}>
           <div>
             <label>
               <p>Title:</p>
-              <input type="text" name="title" placeholder="Edit Title..." />
+              <input
+                type="text"
+                name="title"
+                placeholder="Edit Title..."
+                value={guideInfo.title}
+                onChange={changeHandler}
+              />
             </label>
           </div>
 
@@ -89,7 +116,9 @@ export const EditGuideForm = () => {
           </div>
 
           <section className="submitButton">
-            <button to="/">Submit Changes</button>
+            <button type="submit" to="/protected">
+              Submit Changes
+            </button>
 
             <Link to="/protected">
               <button>Cancel</button>

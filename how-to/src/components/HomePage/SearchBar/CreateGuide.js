@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { ProtectedNavbar } from "../../Navbars/ProtectedNavigation";
 import styled from "styled-components";
@@ -51,20 +51,6 @@ const CreateFormStyle = styled.form`
 `;
 
 export const CreateGuide = () => {
-  const [guide] = useState({
-    id: "test",
-    state: {
-      likes: 0,
-      up_vote: 0,
-      down_vote: 0
-    },
-    title: "test",
-    image: "test",
-    content: "test"
-  });
-
-  console.log("title: ", guide.title);
-
   return (
     <>
       <ProtectedNavbar />
