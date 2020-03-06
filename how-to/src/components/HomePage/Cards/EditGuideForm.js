@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+
+// eslint-disable-next-line
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { ProtectedNavbar } from "../../Navbars/ProtectedNavigation";
 import styled from "styled-components";
+import { GlobalState } from "../../../context/GlobalState";
+
+
 
 const EditFormStyles = styled.form`
   /* Main Form Styles */
   text-align: center;
-  margin: 10%;
+
+  margin: 2%;
+
 
   /* Elements */
   input {
@@ -23,7 +30,9 @@ const EditFormStyles = styled.form`
   }
 
   .imageInput {
-    width: 556px;
+
+    width: 523px;
+
   }
 
   p {
@@ -51,6 +60,15 @@ const EditFormStyles = styled.form`
 `;
 
 export const EditGuideForm = () => {
+
+
+  const { state } = useContext(GlobalState);
+
+  const [editedGuide, setEditedGuide] = useState([]);
+
+
+  console.log('Edited State: ', state);
+
   return (
     <>
       <ProtectedNavbar />
