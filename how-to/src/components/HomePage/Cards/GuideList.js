@@ -39,9 +39,6 @@ const GuideList = () => {
         return <GuideCard guide={guide} key={guide.id} />;
       })}
     </>
-    // <>
-    //     <CreateGuideCard guide={state}/>
-    // </>
   );
 };
 

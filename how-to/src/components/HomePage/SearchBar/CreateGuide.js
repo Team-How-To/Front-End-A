@@ -58,8 +58,8 @@ export const CreateGuide = props => {
   const [newGuide, setNewGuide] = useState({
     title: "",
     steps: "",
-    ht_pic: "",
-    user_id: 1
+    ht_pic: null,
+    user_id: localStorage.userid
   });
 
   console.log("newGuide: ", newGuide);
@@ -74,10 +74,9 @@ export const CreateGuide = props => {
   const handleSubmit = e => {
     e.preventDefault();
     axiosWithAuth()
-      .get("/api/howto/newhowto", newGuide)
+      .post("/api/howto/newhowto", newGuide)
       .then(res => {
         setState({ ...state, newGuide });
-        props.history.push("/protected");
       })
       .catch(err => console.log(err));
   };
