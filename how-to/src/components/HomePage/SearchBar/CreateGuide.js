@@ -52,13 +52,14 @@ const CreateFormStyle = styled.form`
   }
 `;
 
-export const CreateGuide = ( ) => {
+export const CreateGuide = ( props ) => {
 
     const { state } = useContext(GlobalState);
     const [newState, setNewState] = useState({})
 
     console.log('newstate: ', newState);
     console.log('state: ', state);
+    console.log('props: ', props);
 
 
 
@@ -99,6 +100,10 @@ export const CreateGuide = ( ) => {
     addNewGuide(guide);
     setGuide({ title: '', ht_pic: '', id: 0, likes: 0, Steps: '' });
     setNewState(guide);
+    setTimeout(function() {
+      props.history.push('/protected');
+  }, 3)
+    
   };
 
 
