@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     axiosWithAuth()
-      .get("api/howto")
+      .get("/api/howto")
       .then(res => {
         setState(res.data);
       })

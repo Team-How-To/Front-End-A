@@ -61,7 +61,7 @@ export const Signup = props => {
     username: "",
     password: "",
     location: "",
-    user_type: Date.now()
+    user_type: 1
   });
 
   const [error, setError] = useState("");
@@ -69,6 +69,7 @@ export const Signup = props => {
   // Handlers
   const handleChanges = e => {
     setCred({ ...cred, [e.target.name]: e.target.value });
+    console.log(cred);
   };
 
   const submit = e => {
