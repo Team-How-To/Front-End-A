@@ -20,24 +20,30 @@ const SearchFormStyle = styled.form`
   }
 `;
 
+
 const SearchBar = ( guideProps ) => {
+
 
   return (
     <>
       <section>
         <div>
+
             <SearchFormStyle onSubmit={guideProps.handleSubmit}>
+
             <label htmlFor="name">Search: </label>
             <input
               id="id"
               type="text"
               name="name"
               placeholder="Search Guides..."
+
               value={guideProps.searchTerm}
               onChange={guideProps.handleChange}
             />
             <Link to="/create_guide">
               <button type='button'>Add New How-To</button>
+
             </Link>
           </SearchFormStyle>
         </div>
@@ -47,3 +53,4 @@ const SearchBar = ( guideProps ) => {
 };
 
 export default SearchBar;
+

@@ -12,14 +12,18 @@ class Buttons extends React.Component {
   };
 
   addUpVote = () => {
+
     let newCount = (Number(this.state.up_vote)) + 1;
+
     this.setState({
       up_vote: newCount
     });
   };
 
   addDownVote = () => {
+
     let newCount = (Number(this.state.down_vote)) + 1;
+
     this.setState({
       down_vote: newCount
     });
@@ -40,9 +44,11 @@ class Buttons extends React.Component {
           {this.state.down_vote} -
         </button>
 
+
         <Link to="/edit_card">
           <button type='button'>Edit</button>
         </Link>
+
 
         <button>Delete</button>
       </>

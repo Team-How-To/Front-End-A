@@ -52,7 +52,7 @@ const CreateFormStyle = styled.form`
   }
 `;
 
-export const CreateGuideForm = ( ) => {
+export const CreateGuide = ( ) => {
 
     const { state } = useContext(GlobalState);
     const [newState, setNewState] = useState({})
@@ -64,9 +64,9 @@ export const CreateGuideForm = ( ) => {
 
 
     const [guide, setGuide] = useState( {
-      id: 0,
+      id: Date.now(),
       title: '',
-      ht_pic: null,
+      ht_pic: undefined,
       Steps: '',
       likes: 0
     } );
@@ -97,7 +97,7 @@ export const CreateGuideForm = ( ) => {
     console.log("submitting!");
     event.preventDefault();
     addNewGuide(guide);
-    setGuide({ title: '', ht_pic: null, id: 0, likes: 0, Steps: '' });
+    setGuide({ title: '', ht_pic: '', id: 0, likes: 0, Steps: '' });
     setNewState(guide);
   };
 
@@ -119,6 +119,22 @@ export const CreateGuideForm = ( ) => {
             />
           </label>
         </div>
+
+        <label htmlFor='ht_pic'>
+            <p>Image:</p>
+            <input
+                className="imageInput"
+                type="text"
+                placeholder="Add Image..."
+                id="ht_pic"
+                name="ht_pic"
+                value={guide.ht_pic}
+                onChange={handleChanges}
+            />
+            <button>Add File</button>
+        </label>
+
+
 
         <div>
           <label htmlFor="Steps">
@@ -144,7 +160,7 @@ export const CreateGuideForm = ( ) => {
       </CreateFormStyle>
 
 
-      {/* THIS CAN BE REMOVED ONCE THE DATA IS PUSHED TO STATE!!! */}
+      {/* THIS CAN BE REMOVED ONCE THE DATA IN NEW STATE IS PUSHED TO STATE!!! */}
       <GuideCard guide={guide} title={guide.title} Steps={guide.Steps} />
 
 
@@ -152,4 +168,4 @@ export const CreateGuideForm = ( ) => {
   );
 };
 
-export default CreateGuideForm;
+export default CreateGuide;
