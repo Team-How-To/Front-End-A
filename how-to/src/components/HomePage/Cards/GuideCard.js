@@ -13,7 +13,9 @@ const Card = styled.form`
   background: ${props => props.theme.primaryColor};
   text-align: center;
   color: ${props => props.theme.fontColorLight};
-  width: 400px;
+
+  width: 45%;
+
   padding: 3%;
   margin: 2%;
 
@@ -34,7 +36,8 @@ const Card = styled.form`
   }
 `;
 
-const GuideCard = ({ guide }) => {
+const GuideCard = ( {guide} ) => {
+
   return (
     <SectionCardStyle>
       <Card>

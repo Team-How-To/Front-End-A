@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+// eslint-disable-next-line
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { ProtectedNavbar } from "../../Navbars/ProtectedNavigation";
 import styled from "styled-components";
+import { GlobalState } from "../../../context/GlobalState";
 
 const EditFormStyles = styled.form`
   /* Main Form Styles */
   text-align: center;
-  margin: 10%;
+
+  margin: 2%;
 
   /* Elements */
   input {
@@ -23,7 +26,7 @@ const EditFormStyles = styled.form`
   }
 
   .imageInput {
-    width: 556px;
+    width: 523px;
   }
 
   p {
@@ -50,43 +53,22 @@ const EditFormStyles = styled.form`
   }
 `;
 
-const initialItem = {
-  id: "",
-  title: ""
-};
+export const EditGuideForm = () => {
+  const { state } = useContext(GlobalState);
 
-export const EditGuideForm = props => {
-  const [guideInfo, setGuideInfo] = useState({ initialItem });
+  const [editedGuide, setEditedGuide] = useState([]);
 
-  const changeHandler = e => {
-    console.log(guideInfo);
-    setGuideInfo({
-      ...guideInfo,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    const id = Number(props.match.params.id);
-    props.updateGuide(id, guideInfo);
-  };
+  console.log("Edited State: ", state);
 
   return (
     <>
       <ProtectedNavbar />
       <section>
-        <EditFormStyles onSubmit={handleSubmit}>
+        <EditFormStyles>
           <div>
             <label>
               <p>Title:</p>
-              <input
-                type="text"
-                name="title"
-                placeholder="Edit Title..."
-                value={guideInfo.title}
-                onChange={changeHandler}
-              />
+              <input type="text" name="title" placeholder="Edit Title..." />
             </label>
           </div>
 
@@ -116,9 +98,7 @@ export const EditGuideForm = props => {
           </div>
 
           <section className="submitButton">
-            <button type="submit" to="/protected">
-              Submit Changes
-            </button>
+            <button to="/">Submit Changes</button>
 
             <Link to="/protected">
               <button>Cancel</button>
