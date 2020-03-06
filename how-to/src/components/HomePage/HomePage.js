@@ -1,17 +1,15 @@
 import React from "react";
+// import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { ProtectedNavbar } from "../Navbars/ProtectedNavigation";
-// import SearchBar from "./SearchBar";
-// import { HowToList } from "./Cards/HowToList";
-import FormList from "./Cards/FormList";
+import GuideList from "./Cards/GuideList";
 
 export const HomePage = () => {
+
+    
   return (
     <div>
       <ProtectedNavbar />
-      <FormList />
-      {/* <div>
-        <HowToList />
-      </div> */}
+      <GuideList />
     </div>
   );
 };
