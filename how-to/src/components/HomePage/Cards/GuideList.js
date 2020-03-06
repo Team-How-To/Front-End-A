@@ -1,3 +1,4 @@
+
 import React, { useState, useContext, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import GuideCard from "./GuideCard";
@@ -56,8 +57,11 @@ const GuideList = () => {
                 <GuideCard guide={guide} key={guide.id} />
             )
         })}
+
     </>
   );
 };
 
+
 export default GuideList;
+

@@ -24,8 +24,10 @@ function App() {
         setState(res.data);
       })
       .catch(err => console.log(err));
+
   }, []);
   
+
   return (
     <GlobalState.Provider value={{ state }}>
       <Div className="App">

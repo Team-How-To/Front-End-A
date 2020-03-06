@@ -13,7 +13,9 @@ const Card = styled.form`
   background: ${props => props.theme.primaryColor};
   text-align: center;
   color: ${props => props.theme.fontColorLight};
+
   width: 45%;
+
   padding: 3%;
   margin: 2%;
 

@@ -1,8 +1,10 @@
+
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { ProtectedNavbar } from "../../Navbars/ProtectedNavigation";
 import styled from "styled-components";
 import { GlobalState } from "../../../context/GlobalState";
+
 
 const CreateFormStyle = styled.form`
   /* Main Form Styles */
@@ -52,6 +54,7 @@ const CreateFormStyle = styled.form`
 `;
 
 export const CreateGuide = () => {
+
 
     const { state } = useContext(GlobalState);
 
@@ -119,6 +122,7 @@ export const CreateGuide = () => {
                 </section>
             </CreateFormStyle>
         </section>
+
     </>
   );
 };
