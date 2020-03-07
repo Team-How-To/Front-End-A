@@ -15,8 +15,11 @@ const Div = styled.div`
   font-family: ${props => props.theme.fontFamily};
 `;
 
-function App() {
+function App(props) {
   const [state, setState] = useState([]);
+  const [userId] = useState({
+    user_id: localStorage.userid
+  });
 
   useEffect(() => {
     axiosWithAuth()
@@ -27,8 +30,21 @@ function App() {
       .catch(err => console.log(err));
   }, []);
 
+  const deleteGuide = id => {
+    console.log("id: ", id);
+    axiosWithAuth()
+      .delete(`/api/howto/delete/${id}`)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log("Delete Guide Error: ", err);
+      });
+    console.log("userID: ", userId.user_id);
+  };
+
   return (
-    <GlobalState.Provider value={{ state }}>
+    <GlobalState.Provider value={{ state, deleteGuide }}>
       <Div className="App">
         <Switch>
           <ProtectedRoute exact path="/protected" component={Home} />
@@ -37,7 +53,7 @@ function App() {
           <Route
             path="/create_guide"
             exact
-            component={props => <CreateGuide state={state} />}
+            component={props => <CreateGuide state={state} userId={userId} />}
           />
           <Route path="/edit_card" component={EditGuideForm} />
         </Switch>

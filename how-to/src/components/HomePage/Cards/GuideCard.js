@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import Buttons from "./Buttons";
 import styled from "styled-components";
+import { axiosWithAuth } from "../../../utils/axiosWithAuth";
+import { GlobalState } from "../../../context/GlobalState";
 
 // Styles
 const SectionCardStyle = styled.section`
@@ -36,7 +38,8 @@ const Card = styled.form`
   }
 `;
 
-const GuideCard = ( {guide} ) => {
+const GuideCard = ({ guide }) => {
+  const { state, deleteGuide } = useContext(GlobalState);
 
   return (
     <SectionCardStyle>
@@ -45,7 +48,7 @@ const GuideCard = ( {guide} ) => {
           <h1>{guide.title}</h1>
           <p>{guide.Steps}</p>
           <div>
-            <Buttons state={guide} />
+            <Buttons state={guide} key={guide.id} deleteGuide={deleteGuide} />
           </div>
         </div>
       </Card>

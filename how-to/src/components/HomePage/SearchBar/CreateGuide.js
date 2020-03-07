@@ -59,7 +59,7 @@ export const CreateGuide = props => {
     title: "",
     steps: "",
     ht_pic: null,
-    user_id: localStorage.userid
+    user_id: props.userId.user_id
   });
 
   console.log("newGuide: ", newGuide);

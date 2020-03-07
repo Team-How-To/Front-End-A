@@ -1,8 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { axiosWithAuth } from "../../../utils/axiosWithAuth";
 
 class Buttons extends React.Component {
-  state = this.props.state;
+  constructor(props) {
+    super(props);
+    this.state = {
+      guide: null
+    };
+  }
+
+  componentDidMount() {
+    this.fetchGuide(this.props.state.id);
+  }
+
+  fetchGuide = id => {
+    const myPromise = axiosWithAuth().get(`/api/howto/${id}`);
+    myPromise
+      .then(response => {
+        this.setState({ guide: response.data });
+        console.log("fetch: ", response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   addLikes = () => {
     let newCount = this.state.likes + 1;
@@ -27,6 +49,11 @@ class Buttons extends React.Component {
     });
   };
 
+  deleteHandler = e => {
+    e.preventDefault();
+    this.props.deleteGuide(this.state.guide[0].id);
+    console.log("DeleteHandler / Guide ID: ", this.state.guide[0].id);
+  };
   render() {
     return (
       <>
@@ -46,7 +73,7 @@ class Buttons extends React.Component {
           <button type="button">Edit</button>
         </Link>
 
-        <button>Delete</button>
+        <button onClick={this.deleteHandler}>Delete</button>
       </>
     );
   }
