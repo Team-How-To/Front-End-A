@@ -30,8 +30,9 @@ function App(props) {
       .catch(err => console.log(err));
   }, []);
 
-  const deleteGuide = id => {
+  const deleteGuide = (id, userId) => {
     console.log("id: ", id);
+    console.log("User ID: ", userId);
     axiosWithAuth()
       .delete(`/api/howto/delete/${id}`)
       .then(res => {
@@ -40,7 +41,6 @@ function App(props) {
       .catch(err => {
         console.log("Delete Guide Error: ", err);
       });
-    console.log("userID: ", userId.user_id);
   };
 
   return (
@@ -53,7 +53,9 @@ function App(props) {
           <Route
             path="/create_guide"
             exact
-            component={props => <CreateGuide state={state} userId={userId} />}
+            component={props => (
+              <CreateGuide state={state} userId={userId} props={props} />
+            )}
           />
           <Route path="/edit_card" component={EditGuideForm} />
         </Switch>

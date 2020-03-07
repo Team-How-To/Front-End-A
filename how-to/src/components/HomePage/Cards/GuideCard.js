@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Buttons from "./Buttons";
 import styled from "styled-components";
-import { axiosWithAuth } from "../../../utils/axiosWithAuth";
 import { GlobalState } from "../../../context/GlobalState";
 
 // Styles
@@ -38,17 +37,22 @@ const Card = styled.form`
   }
 `;
 
-const GuideCard = ({ guide }) => {
-  const { state, deleteGuide } = useContext(GlobalState);
+const GuideCard = props => {
+  const { deleteGuide } = useContext(GlobalState);
 
   return (
     <SectionCardStyle>
       <Card>
         <div>
-          <h1>{guide.title}</h1>
-          <p>{guide.Steps}</p>
+          <h1>{props.guide.title}</h1>
+          <p>{props.guide.Steps}</p>
           <div>
-            <Buttons state={guide} key={guide.id} deleteGuide={deleteGuide} />
+            <Buttons
+              state={props.guide}
+              key={props.guide.id}
+              deleteGuide={deleteGuide}
+              props={props}
+            />
           </div>
         </div>
       </Card>

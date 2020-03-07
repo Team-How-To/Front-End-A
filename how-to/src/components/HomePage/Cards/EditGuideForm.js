@@ -56,8 +56,6 @@ const EditFormStyles = styled.form`
 export const EditGuideForm = () => {
   const { state } = useContext(GlobalState);
 
-  const [editedGuide, setEditedGuide] = useState([]);
-
   console.log("Edited State: ", state);
 
   return (

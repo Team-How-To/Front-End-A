@@ -77,6 +77,7 @@ export const CreateGuide = props => {
       .post("/api/howto/newhowto", newGuide)
       .then(res => {
         setState({ ...state, newGuide });
+        props.props.history.push("/protected");
       })
       .catch(err => console.log(err));
   };

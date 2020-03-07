@@ -77,25 +77,6 @@ class Buttons extends React.Component {
       </>
     );
   }
-
-  // return (
-  // <>
-  //     <section>
-  //         <div>
-  //             <span>{props.state.likes}</span>
-  //             <button>Like</button>
-  //         </div>
-  //         <div>
-  //             <span>{props.state.up_vote}</span>
-  //             <button>+</button>
-  //         </div>
-  //         <div>
-  //             <span>{props.state.down_vote}</span>
-  //             <button>-</button>
-  //         </div>
-  //     </section>
-  // </>
-  // );
 }
 
 export default Buttons;
