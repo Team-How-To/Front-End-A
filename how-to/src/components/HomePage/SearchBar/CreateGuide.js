@@ -1,10 +1,8 @@
-
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ProtectedNavbar } from "../../Navbars/ProtectedNavigation";
 import styled from "styled-components";
-import { GlobalState } from "../../../context/GlobalState";
-
+import { axiosWithAuth } from "../../../utils/axiosWithAuth";
 
 const CreateFormStyle = styled.form`
   /* Main Form Styles */
@@ -53,76 +51,92 @@ const CreateFormStyle = styled.form`
   }
 `;
 
-export const CreateGuide = () => {
+export const CreateGuide = props => {
+  console.log("props.state: ", props.state);
+  const [state, setState] = useState(props.state);
 
+  const [newGuide, setNewGuide] = useState({
+    title: "",
+    steps: "",
+    ht_pic: null,
+    user_id: props.userId.user_id
+  });
 
-    const { state } = useContext(GlobalState);
+  console.log("newGuide: ", newGuide);
 
-    console.log('state: ', state);
-
-    const [guide, setGuide] = useState({
-        id: 0,
-        likes: 0,
-        title: "",
-        ht_pic: null,
-        Steps: "",
-        user_id: 0
+  const handleChanges = e => {
+    setNewGuide({
+      ...newGuide,
+      [e.target.name]: e.target.value
     });
+  };
 
-
-
+  const handleSubmit = e => {
+    e.preventDefault();
+    axiosWithAuth()
+      .post("/api/howto/newhowto", newGuide)
+      .then(res => {
+        setState({ ...state, newGuide });
+        props.props.history.push("/protected");
+      })
+      .catch(err => console.log(err));
+  };
 
   return (
     <>
-        <ProtectedNavbar />
-        <section>
-            <CreateFormStyle>
-                <div>
-                    <label>
-                        <p>Title:</p>
-                        <input 
-                            type="text" 
-                            name="title" 
-                            placeholder="Add Title..."
-                            // value={setGuide(guide.title)}
-                        />
-                    </label>
-                </div>
+      <ProtectedNavbar />
+      <CreateFormStyle onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="title">
+            <p>Title: </p>
+            <input
+              type="text"
+              placeholder="Title..."
+              id="title"
+              name="title"
+              value={newGuide.title}
+              onChange={handleChanges}
+            />
+          </label>
+        </div>
 
-                <div>
-                <label>
-                    <p>Image:</p>
-                    <input
-                        className="imageInput"
-                        type="text"
-                        name="image"
-                        placeholder="Add Image..."
-                    />
-                    <button>Add File</button>
-                </label>
-                </div>
+        <label htmlFor="ht_pic">
+          <p>Image:</p>
+          <input
+            className="imageInput"
+            type="text"
+            placeholder="Add Image..."
+            id="ht_pic"
+            name="ht_pic"
+            value={newGuide.ht_pic}
+            onChange={handleChanges}
+          />
+          <button>Add File</button>
+        </label>
 
-                <div>
-                <label>
-                    <p>Guide:</p>
-                    <textarea
-                        type="text"
-                        name="content"
-                        placeholder="Add Guide Steps..."
-                    />
-                </label>
-                </div>
+        <div>
+          <label htmlFor="Steps">
+            <p>Guide Steps: </p>
+            <textarea
+              id="Steps"
+              name="steps"
+              placeholder="Add your guide steps here..."
+              value={newGuide.steps}
+              onChange={handleChanges}
+            />
+          </label>
+        </div>
 
-                <section className="submitButton">
-                    <button>Submit</button>
+        <section className="submitButton">
+          <button type="submit">Add Guide</button>
 
-                    <Link to="/protected">
-                        <button>Cancel</button>
-                    </Link>
-                </section>
-            </CreateFormStyle>
+          <Link to="/protected">
+            <button>Cancel</button>
+          </Link>
         </section>
-
+      </CreateFormStyle>
     </>
   );
 };
+
+export default CreateGuide;

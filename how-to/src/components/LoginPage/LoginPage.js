@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
@@ -75,6 +75,7 @@ export const LoginPage = props => {
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("userid", res.data.userid);
         props.history.push("/protected");
       })
       .catch(err => {

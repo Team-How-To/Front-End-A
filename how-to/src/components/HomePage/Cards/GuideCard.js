@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import Buttons from "./Buttons";
 import styled from "styled-components";
+import { GlobalState } from "../../../context/GlobalState";
 
 // Styles
 const SectionCardStyle = styled.section`
@@ -36,15 +37,22 @@ const Card = styled.form`
   }
 `;
 
-const GuideCard = ({ guide }) => {
+const GuideCard = props => {
+  const { deleteGuide } = useContext(GlobalState);
+
   return (
     <SectionCardStyle>
       <Card>
         <div>
-          <h1>{guide.title}</h1>
-          <p>{guide.Steps}</p>
+          <h1>{props.guide.title}</h1>
+          <p>{props.guide.Steps}</p>
           <div>
-            <Buttons state={guide} />
+            <Buttons
+              state={props.guide}
+              key={props.guide.id}
+              deleteGuide={deleteGuide}
+              props={props}
+            />
           </div>
         </div>
       </Card>
