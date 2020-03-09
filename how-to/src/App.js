@@ -4,7 +4,6 @@ import { LoginPage } from "./components/LoginPage/LoginPage";
 import { Signup } from "./components/SignupPage/SignupPage";
 import { HomePage as Home } from "./components/HomePage/HomePage";
 import { CreateGuide } from "./components/HomePage/SearchBar/CreateGuide";
-import { EditGuideForm } from "./components/HomePage/Cards/EditGuideForm";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import styled from "styled-components";
 import { GlobalState } from "./context/GlobalState";
@@ -30,13 +29,13 @@ function App(props) {
       .catch(err => console.log(err));
   }, []);
 
-  const deleteGuide = (id, userId) => {
+  const deleteGuide = id => {
     console.log("id: ", id);
-    console.log("User ID: ", userId);
+    console.log("User ID: ");
     axiosWithAuth()
       .delete(`/api/howto/delete/${id}`)
       .then(res => {
-        console.log(res.data);
+        console.log("Delete guide response: ", res.data);
       })
       .catch(err => {
         console.log("Delete Guide Error: ", err);
@@ -57,7 +56,6 @@ function App(props) {
               <CreateGuide state={state} userId={userId} props={props} />
             )}
           />
-          <Route path="/edit_card" component={EditGuideForm} />
         </Switch>
       </Div>
     </GlobalState.Provider>
